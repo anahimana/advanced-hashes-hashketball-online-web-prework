@@ -333,3 +333,36 @@ def player_with_longest_name
 end
 
 # puts player_with_longest_name
+
+def long_name_steals_a_ton?
+    player_long_name = player_with_longest_name()
+    player_long_name_steals = 0
+    all_other_steals = []
+    result = nil
+    game_hash.each do |loc, team_data|
+        team_data[:players].each do |player, stats|
+            # puts player
+
+            if player == player_long_name.to_sym
+                # player_long_name_steals for longest name platers
+                player_long_name_steals = stats[:steals].to_i
+            else
+                # Add player steals to all_other_steals
+                all_other_steals << stats[:steals].to_i
+            end
+        end
+    end
+
+    # Iterate over all_other_steals comparing player_long_name_steals
+    all_other_steals.each_with_index do |item, i|
+        if item > player_long_name_steals
+            # We get in here, then the player doesn't have most steals
+            return false
+        else
+            result = true
+        end
+    end
+    result
+end
+
+puts long_name_steals_a_ton?
