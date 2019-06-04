@@ -187,7 +187,7 @@ end
 def player_numbers(team)
    result = []
   # Access first level of hash
-  game.collect do |location, team_data|
+  game_hash.collect do |location, team_data|
     # control for the correct team
     if team_data[:team_name] == team
       # return the players for team
