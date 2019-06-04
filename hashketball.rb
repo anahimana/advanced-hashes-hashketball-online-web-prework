@@ -179,7 +179,7 @@ end
 
 def team_names
    # Access first level of hash
-  game.collect do |location, team_data|
+  game_has.collect do |location, team_data|
     team_data[:team_name]
   end
 end
