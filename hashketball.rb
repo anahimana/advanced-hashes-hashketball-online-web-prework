@@ -122,21 +122,18 @@ my_player = "Alan Anderson"
 my_player2 = "Ben Gordon"
 
 def num_points_scored(player)
-  game = game_hash
-  # Access first level of hash
-  game.each do |location, team_data|
+   # Access first level of hash
+  game_hash.each do |location, team_data|
     # Access second level of hash
-    # binding.pry
-    team_data.each do |attribute, data|
-      # binding.pry
+        team_data.each do |attribute, data|
+
       # Test condition for player object
       if attribute == :players
-        # binding.pry
+
         # Test condition for player name
         if data.keys.include?(player.to_sym)
           # return the player score
-          # binding.pry
-          return data[player.to_sym]["points".to_sym].to_i
+            return data[player.to_sym]["points".to_sym].to_i
         end
       end
     end
@@ -145,21 +142,19 @@ end
 
 
 def shoe_size(player)
-  game = game_hash
-  # Access first level of hash
-  game.each do |location, team_data|
+   # Access first level of hash
+  game_hash.each do |location, team_data|
     # Access second level of hash
-    # binding.pry
-    team_data.each do |attribute, data|
-      # binding.pry
+        team_data.each do |attribute, data|
+
       # Test condition for player object
       if attribute == :players
-        # binding.pry
+
         # Test condition for player name
         if data.keys.include?(player.to_sym)
           # return the player score
-          # binding.pry
-          return data[player.to_sym]["shoe".to_sym].to_i
+
+              return data[player.to_sym]["shoe".to_sym].to_i
         end
       end
     end
@@ -168,12 +163,10 @@ end
 
 
 def team_colors(team)
-  game = game_hash
-  result = nil
+   result = nil
   # Access first level of hash
-  game.each do |location, team_data|
+  game_hash.each do |location, team_data|
     # Access second level of hash
-    # binding.pry
     # Test condition for team
     if team_data[:team_name] == team
       # update result variable
@@ -185,25 +178,20 @@ end
 
 
 def team_names
-  game = game_hash
-  # Access first level of hash
+   # Access first level of hash
   game.collect do |location, team_data|
     team_data[:team_name]
   end
 end
 
-# my_team = "Brooklyn Nets"
-# puts team_names
-
 def player_numbers(team)
-  game = game_hash
-  result = []
+   result = []
   # Access first level of hash
   game.collect do |location, team_data|
     # control for the correct team
     if team_data[:team_name] == team
       # return the players for team
-      # binding.pry
+
       team_data[:players].each do |player|
         result << player[1][:number].to_i
       end
@@ -215,18 +203,17 @@ end
 # puts player_numbers("Brooklyn Nets")
 
 def player_stats(arg)
-  game = game_hash
-  result = {}
+   result = {}
   # Access first level of hash
-  game.each do |location, team_data|
+  game_hash.each do |location, team_data|
     team_data[:players].collect do |player, data|
       if player == arg.to_sym
         # puts "You have the player!"
         data.each do |item, value|
-          # binding.pry
-          data[item] = value.to_i
-          # binding.pry
-        end
+
+              data[item] = value.to_i
+
+            end
         result = data
       end
     end
@@ -276,8 +263,7 @@ def most_points_scored
         player_name = player
       end
     end
-    # binding.pry
-    # Second, get the number of rebounds for player with biggest shoe
+        # Second, get the number of rebounds for player with biggest shoe
     # team_data[:players].each do |person, stats|
       # Upate result variable
       # result = stats[:rebounds].to_i if person == player_name
